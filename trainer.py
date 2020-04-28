@@ -224,7 +224,7 @@ class Trainer:
                 if "depth_gt" in inputs:
                     self.compute_depth_losses(inputs, outputs, losses)
 
-                self.log("train", inputs, outputs, losses)
+                #self.log("train", inputs, outputs, losses)
                 self.val()
 
             self.step += 1
@@ -338,7 +338,7 @@ class Trainer:
             if "depth_gt" in inputs:
                 self.compute_depth_losses(inputs, outputs, losses)
 
-            self.log("val", inputs, outputs, losses)
+            #self.log("val", inputs, outputs, losses)
             del inputs, outputs, losses
 
         self.set_train()
@@ -619,6 +619,7 @@ class Trainer:
         """Load model(s) from disk
         """
         self.opt.load_weights_folder = os.path.expanduser(self.opt.load_weights_folder)
+
 
         assert os.path.isdir(self.opt.load_weights_folder), \
             "Cannot find folder {}".format(self.opt.load_weights_folder)
